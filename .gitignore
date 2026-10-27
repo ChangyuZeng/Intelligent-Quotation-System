@@ -1,21 +1,37 @@
 .DS_Store
 Thumbs.db
 ~$*
+*.log
 
-# 运行数据与客户数据（价目库 .db、上传/导出件、日志；运行时自动生成，勿入库）
+# ---------------------------------------------------------------------------
+# 运行数据与客户数据（价目库 .db、上传/导出件）——公开仓库，绝不入库
+# ---------------------------------------------------------------------------
 data/
 !data/.gitkeep
 
-# 后端 Python
-demo-app/backend/.venv/
-demo-app/backend/data/
+# 便携运行时：由构建脚本从本机 CPython 复制而来（约 70MB），不入库
+runtime/
+runtime.zip
+
+# 交付产物
+*.exe
+*.ico
+dist/
+build/pyi/
+
+# Python
 __pycache__/
 *.pyc
 .pytest_cache/
+.venv/
+venv/
 
-# 前端 Node / 构建缓存
-demo-app/node_modules/
-demo-app/.next/
-demo-app/dist/
-demo-app/.wrangler/
-*.log
+# Node / 前端构建缓存（server/static 是构建产物，但为了让 clone 后即可运行而入库）
+node_modules/
+frontend/node_modules/
+frontend/dist/
+.wrangler/
+
+# 打包临时目录
+runtime.tmp/
+runtime.old/

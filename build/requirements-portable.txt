@@ -1,0 +1,12 @@
+# 便携版后端依赖（构建期使用，运行期已固化进 runtime/Lib/site-packages）
+# 相对原 requirements.txt 的两处调整：
+#   1. 移除 psycopg[binary]：代码里没有任何 psycopg 引用，本版仅用 SQLite
+#   2. uvicorn 去掉 [standard]：避免 uvloop/watchfiles/httptools 编译依赖，
+#      后端没有 WebSocket 端点，纯 Python 的 uvicorn + h11 已足够
+fastapi==0.128.0
+uvicorn==0.40.0
+SQLAlchemy==2.0.44
+python-multipart==0.0.20
+openpyxl==3.1.5
+xlrd==2.0.2
+pydantic==2.12.4
